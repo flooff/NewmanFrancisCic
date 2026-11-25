@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newman Francis CIC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confident, warm, civic; plain UK business English for partners and residents alike
+   IDEA: a neighbourhood switchboard: homes, groups and funders lit up and wired together
+   PICTURE: an illustrated street of blocks and trees, glowing lime lines running from a central hub to every door
+   COLOUR and TYPE: deep teal ground, electric lime accent, coral support; Unbounded titles + Inter text
+   LAYOUT: sticky header, hash-routed pages, full-width bands, teal footer */
+:root{color-scheme:light dark;
+--bg:light-dark(#f3f5ef,#0b1f1f);--ink:light-dark(#0e2a2a,#e8f1ea);--soft:light-dark(#4a605d,#a9bdb6);
+--panel:light-dark(#ffffff,#12302f);--line:light-dark(#d6ded3,#244644);
+--deep:#0e2a2a;--deep2:#143b3a;--lime:#d4f24a;--coral:#ff6b4a;--mint:#9fe3c9}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Unbounded,Inter,sans-serif;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(32px,5vw,52px);font-weight:700}h2{font-size:clamp(26px,3.4vw,38px);font-weight:700}h3{font-size:19px;font-weight:500;line-height:1.25}
+p{margin:0 0 1em;max-width:68ch}a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(36px,5vw,80px) max(5vw,16px)}
+.dark{background:var(--deep);color:#e8f1ea}.dark p{color:#b9cdc6}
+.alt{background:var(--panel)}
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--deep);color:#fff;border-bottom:1px solid #1f4a48}
+.hd{display:flex;align-items:center;gap:20px;padding:12px max(5vw,16px);max-width:1340px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 17px Unbounded,sans-serif;white-space:nowrap}
+.logo small{display:block;font:500 12px Inter,sans-serif;color:var(--mint)}
+nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav a{padding:10px 12px;border-radius:999px;text-decoration:none;font-size:15px;color:#cfe0da}
+nav a:hover{color:#fff;background:#1d4644}nav a[aria-current]{background:var(--lime);color:var(--deep);font-weight:600}
+.menu{display:none;margin-left:auto;background:none;border:1px solid #3a6664;color:#fff;border-radius:10px;height:44px;padding:0 14px;font:inherit}
+@media(max-width:980px){.menu{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--deep);flex-direction:column;padding:8px 16px 16px}nav.open{display:flex}nav a{padding:14px}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:600 16px Inter,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn.lime{background:var(--lime);color:var(--deep)}.btn.ghost{border-color:currentColor;background:none;color:inherit}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
+.hero .lede{font-size:19px;color:#c6d8d1}
+.kick{display:inline-block;background:#1d4644;color:var(--mint);padding:6px 14px;border-radius:999px;font-size:14px;margin-bottom:18px}
+.scene{width:100%;height:auto;display:block}
+.flow{stroke-dasharray:6 10;animation:flow 2.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@media(prefers-reduced-motion:reduce){.flow{animation:none}}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+.pagehead{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:end}
+.pagehead p{font-size:18px}
+@media(max-width:820px){.pagehead{grid-template-columns:1fr}}
+/* grids and cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px}
+.dark .card{background:var(--deep2);border-color:#28524f}
+.card p{color:var(--soft)}.dark .card p{color:#b9cdc6}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--lime);display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:24px;height:24px;stroke:var(--deep);fill:none;stroke-width:2}
+.ico.c{background:var(--coral)}.ico.m{background:var(--mint)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:28px}}
+.note{font-size:13px;color:var(--soft);margin-top:14px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:light-dark(#e7f6b4,#33440f);color:light-dark(#3b4a06,#e3f79a);white-space:nowrap}
+.tag.c{background:light-dark(#ffe0d8,#4a2219);color:light-dark(#8a2a14,#ffc2b3)}
+.tag.m{background:light-dark(#d9f4ea,#173f35);color:light-dark(#145240,#bdeedd)}
+/* steps */
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.steps b{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--deep);color:var(--lime);font:700 20px Unbounded,sans-serif}
+.steps p{margin:0;color:var(--soft)}
+/* filter + listings */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:500 15px Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--deep);color:var(--lime);border-color:var(--deep)}
+.list{display:grid;gap:12px}
+.opp{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.opp h3{margin:6px 0 4px}.opp p{margin:0;color:var(--soft);font-size:15px}
+.opp .amt{font:700 20px Unbounded,sans-serif;text-align:right;white-space:nowrap}
+.opp .amt small{display:block;font:500 13px Inter,sans-serif;color:var(--soft)}
+@media(max-width:600px){.opp{grid-template-columns:1fr}.opp .amt{text-align:left}}
+/* forms */
+form{display:grid;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3vw,32px)}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+input,select,textarea{font:16px Inter,sans-serif;padding:12px 14px;min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:130px;resize:vertical}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.ok{display:none;padding:14px 16px;border-radius:12px;background:light-dark(#e7f6b4,#33440f);color:light-dark(#2c3805,#eaf9b0)}
+.ok.show{display:block}
+.cta{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:var(--lime);color:var(--deep);border-radius:28px;padding:clamp(26px,4vw,48px)}
+.cta h2{margin:0}.cta p{margin:6px 0 0;color:#2c4440}.cta .btn{background:var(--deep);color:var(--lime)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px;margin-top:32px}
+.facts div{border-top:2px solid var(--lime);padding-top:14px}
+.facts strong{display:block;font:700 clamp(26px,3vw,34px) Unbounded,sans-serif;color:var(--lime)}
+.facts span{color:#b9cdc6;font-size:15px}
+dl{display:grid;gap:18px;margin:0}dt{font-weight:600}dd{margin:2px 0 0;color:var(--soft)}
+details{border-bottom:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font-weight:600;min-height:28px}
+details p{margin:10px 0 0;color:var(--soft)}
+footer{background:var(--deep);color:#b9cdc6;padding:48px max(5vw,16px) 28px}
+.ft{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.5fr) repeat(2,minmax(0,1fr));gap:32px}
+.ft h3{color:#fff;font-size:16px}.ft a{display:block;color:#cfe0da;text-decoration:none;padding:5px 0}.ft a:hover{color:var(--lime)}
+.legal{max-width:1240px;margin:32px auto 0;padding-top:18px;border-top:1px solid #244644;font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:700px){.ft{grid-template-columns:1fr}}
+.page{display:none}.page.on{display:block}
+</style>
+</head>
+<body>
+<header>
+ <div class="hd">
+  <a class="logo" href="#home" aria-label="Newman Francis CIC home">
+   <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="11" fill="#d4f24a"/><circle cx="11" cy="25" r="4" fill="#0e2a2a"/><circle cx="27" cy="25" r="4" fill="#0e2a2a"/><circle cx="19" cy="12" r="4.5" fill="#ff6b4a"/><path d="M11 25L19 12L27 25" stroke="#0e2a2a" stroke-width="2.4" fill="none"/></svg>
+   <span>Newman Francis<small>Community Interest Company</small></span>
+  </a>
+  <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+   <a href="#home">Home</a><a href="#impact">Our impact</a><a href="#get-support">Get support</a><a href="#funding">Funding and opportunities</a><a href="#work-with-us">Work with us</a><a href="#contact">Contact</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="page" id="p-home">
+ <div class="band dark"><div class="wrap hero">
+  <div>
+   <span class="kick">Community investment for resident-led change</span>
+   <h1>Putting resources where communities already lead.</h1>
+   <p class="lede">Newman Francis CIC connects resident groups, local organisations and partners with the funding, skills and support they need to deliver lasting, measurable social impact.</p>
+   <div class="row"><a class="btn lime" href="#get-support">Get support for your group</a><a class="btn ghost" href="#work-with-us">Partner with us</a></div>
+  </div>
+  <svg class="scene" viewBox="0 0 600 440" role="img" aria-label="Illustrated neighbourhood with homes connected to a central community hub">
+   <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#174341"/><stop offset="1" stop-color="#0e2a2a"/></linearGradient>
+    <pattern id="win" width="14" height="16" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="7" height="8" rx="1.5" fill="#d4f24a" opacity=".55"/></pattern>
+    <pattern id="win2" width="14" height="16" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="7" height="8" rx="1.5" fill="#9fe3c9" opacity=".35"/></pattern>
+    <g id="tree"><ellipse cx="0" cy="2" rx="16" ry="4" fill="#081c1c"/><rect x="-2" y="-18" width="4" height="20" fill="#3a2a22"/><circle cx="0" cy="-30" r="17" fill="#2f8f6f"/><circle cx="-5" cy="-35" r="8" fill="#4fb38c"/></g>
+   </defs>
+   <rect width="600" height="440" rx="28" fill="url(#sky)"/>
+   <circle cx="500" cy="80" r="34" fill="#ff6b4a" opacity=".9"/><circle cx="500" cy="80" r="54" fill="#ff6b4a" opacity=".12"/>
+   <ellipse cx="300" cy="392" rx="290" ry="40" fill="#0a2121"/>
+   <!-- back blocks -->
+   <rect x="40" y="150" width="70" height="230" fill="#1d4f4c"/><rect x="40" y="150" width="70" height="230" fill="url(#win2)"/>
+   <rect x="470" y="170" width="86" height="210" fill="#1d4f4c"/><rect x="470" y="170" width="86" height="210" fill="url(#win2)"/>
+   <!-- homes -->
+   <g><rect x="96" y="250" width="92" height="130" fill="#2a6461"/><path d="M90 252L142 214L194 252Z" fill="#ff6b4a"/><rect x="96" y="250" width="92" height="130" fill="url(#win)"/><rect x="132" y="336" width="22" height="44" rx="3" fill="#0e2a2a"/><rect x="184" y="250" width="4" height="130" fill="#123634"/></g>
+   <g><rect x="392" y="236" width="96" height="144" fill="#2a6461"/><path d="M386 238L440 198L494 238Z" fill="#9fe3c9"/><rect x="392" y="236" width="96" height="144" fill="url(#win)"/><rect x="430" y="336" width="22" height="44" rx="3" fill="#0e2a2a"/><rect x="484" y="236" width="4" height="144" fill="#123634"/></g>
+   <!-- hub -->
+   <g><rect x="232" y="196" width="136" height="184" rx="6" fill="#ecf3ee"/><rect x="232" y="196" width="10" height="184" fill="#ffffff"/><rect x="358" y="196" width="10" height="184" fill="#c7d6cf"/>
+    <path d="M222 200L300 146L378 200Z" fill="#d4f24a"/><path d="M300 146L378 200H344Z" fill="#a9c534"/>
+    <rect x="252" y="222" width="96" height="40" rx="8" fill="#0e2a2a"/><text x="300" y="248" text-anchor="middle" font-family="Unbounded,sans-serif" font-size="13" fill="#d4f24a">HUB</text>
+    <rect x="252" y="276" width="28" height="30" rx="4" fill="#9fe3c9"/><rect x="320" y="276" width="28" height="30" rx="4" fill="#9fe3c9"/><rect x="284" y="320" width="32" height="60" rx="4" fill="#ff6b4a"/></g>
+   <!-- connections -->
+   <g fill="none" stroke="#d4f24a" stroke-width="3" stroke-linecap="round">
+    <path class="flow" d="M300 146C240 70 160 110 142 214"/><path class="flow" d="M300 146C360 70 430 110 440 198"/>
+    <path class="flow" d="M300 146C200 40 90 70 75 150"/><path class="flow" d="M300 146C400 40 500 90 513 170"/>
+   </g>
+   <g fill="#d4f24a"><circle cx="300" cy="146" r="7"/><circle cx="142" cy="214" r="5"/><circle cx="440" cy="198" r="5"/><circle cx="75" cy="150" r="5"/><circle cx="513" cy="170" r="5"/></g>
+   <use href="#tree" x="214" y="384"/><use href="#tree" x="384" y="384"/><use href="#tree" x="66" y="388"/><use href="#tree" x="540" y="388"/>
+   <!-- people -->
+   <g><circle cx="190" cy="366" r="6" fill="#ff6b4a"/><rect x="185" y="372" width="10" height="16" rx="5" fill="#ff6b4a"/><circle cx="206" cy="368" r="5" fill="#9fe3c9"/><rect x="202" y="373" width="8" height="14" rx="4" fill="#9fe3c9"/><circle cx="410" cy="366" r="6" fill="#d4f24a"/><rect x="405" y="372" width="10" height="16" rx="5" fill="#d4f24a"/></g>
+  </svg>
+ </div></div>
+
+ <div class="band"><div class="wrap">
+  <div class="split">
+   <div><h2>Who we are</h2><p>Newman Francis CIC is a Community Interest Company created to reinvest in the places where Newman Francis has spent more than two decades listening to residents. Every surplus we generate is used for community benefit.</p><p>We work alongside resident associations, tenant groups, faith and youth organisations, and informal networks of neighbours who are already making a difference.</p></div>
+   <div class="grid">
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg></div><h3>Resident-led</h3><p>Communities set the priorities. We bring resources, not ready-made answers.</p></div>
+    <div class="card"><div class="ico c"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Funding routes</h3><p>Small grants, match funding and help to secure money from other funders.</p></div>
+    <div class="card"><div class="ico m"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><h3>Measurable impact</h3><p>Simple, proportionate reporting that shows what changed and for whom.</p></div>
+   </div>
+  </div>
+ </div></div>
+
+ <div class="band dark"><div class="wrap">
+  <h2>Who we support</h2>
+  <p>If your group is rooted in a local community and working for its benefit, we would like to hear from you.</p>
+  <div class="grid" style="margin-top:28px">
+   <div class="card"><h3>Resident and tenant associations</h3><p>Groups representing people who live on an estate, street or neighbourhood.</p></div>
+   <div class="card"><h3>Community and voluntary groups</h3><p>Constituted or informal groups running local activities, services or events.</p></div>
+   <div class="card"><h3>Young people and families</h3><p>Projects led by, or designed with, young people, parents and carers.</p></div>
+   <div class="card"><h3>Places in regeneration</h3><p>Communities living through change who want a real voice in what comes next.</p></div>
+  </div>
+  <div class="facts">
+   <div><strong>21 years</strong><span>of community engagement experience from Newman Francis</span></div>
+   <div><strong>100%</strong><span>of any surplus reinvested for community benefit</span></div>
+   <div><strong>4 routes</strong><span>to support: advice, small grants, partnerships and capacity building</span></div>
+  </div>
+ </div></div>
+
+ <div class="band"><div class="wrap"><div class="cta"><div><h2>Have an idea for your community?</h2><p>Tell us about it. A short conversation is the first step.</p></div><a class="btn" href="#get-support">Start a conversation</a></div></div></div>
+</section>
+
+<!-- IMPACT -->
+<section class="page" id="p-impact">
+ <div class="band dark"><div class="wrap pagehead"><div><span class="kick">Our impact</span><h1>Emerging projects, community stories and outcomes.</h1></div><p>We report openly on what we fund, who leads it and what changes as a result.</p></div></div>
+ <div class="band"><div class="wrap">
+  <div class="chips" id="impactChips"></div>
+  <div class="grid" id="projects"></div>
+  <p class="note">Sample content: replace with confirmed projects, photographs and outcomes before launch.</p>
+ </div></div>
+ <div class="band alt"><div class="wrap split">
+  <div><h2>How we measure what matters</h2><p>We agree a small number of outcomes with each group at the start, in their own words. We then check progress together using light-touch tools that do not create extra work for volunteers.</p></div>
+  <dl>
+   <div><dt>Reach</dt><dd>How many residents took part, and whether they reflect the whole community.</dd></div>
+   <div><dt>Change</dt><dd>What is different for people and places, captured through stories, photographs and simple data.</dd></div>
+   <div><dt>Legacy</dt><dd>Whether the group is stronger, better connected and more able to secure future funding.</dd></div>
+  </dl>
+ </div></div>
+</section>
+
+<!-- GET SUPPORT -->
+<section class="page" id="p-get-support">
+ <div class="band dark"><div class="wrap pagehead"><div><span class="kick">Get support</span><h1>How community groups can approach the CIC.</h1></div><p>You do not need a polished proposal. We would rather hear your idea early and help shape it with you.</p></div></div>
+ <div class="band"><div class="wrap split">
+  <div>
+   <h2>Four simple steps</h2>
+   <ol class="steps">
+    <li><b>1</b><div><h3>Get in touch</h3><p>Complete the short enquiry form or call us. Tell us who you are and what you would like to achieve.</p></div></li>
+    <li><b>2</b><div><h3>Have a conversation</h3><p>A member of our team will arrange a call or visit, normally within ten working days.</p></div></li>
+    <li><b>3</b><div><h3>Shape the support</h3><p>Together we agree the right route: advice, a small grant, an introduction to a partner or help applying elsewhere.</p></div></li>
+    <li><b>4</b><div><h3>Deliver and share</h3><p>You lead the work. We stay alongside you and help you tell the story of what changed.</p></div></li>
+   </ol>
+  </div>
+  <form id="supportForm" novalidate>
+   <h3>Enquiry form</h3>
+   <div class="two"><label>Your name<input id="s-name" required autocomplete="name"></label><label>Group or organisation<input id="s-org" required></label></div>
+   <div class="two"><label>Email address<input id="s-email" type="email" required autocomplete="email"></label><label>Area or borough<input id="s-area"></label></div>
+   <label>Type of support<select id="s-type"><option>Advice and guidance</option><option>Small grant</option><option>Help applying to other funders</option><option>Introduction to a partner</option><option>Not sure yet</option></select></label>
+   <label>Tell us about your idea<textarea id="s-msg" required></textarea></label>
+   <button class="btn lime" type="submit">Send enquiry</button>
+   <div class="ok" id="s-ok" role="status"></div>
+  </form>
+ </div></div>
+ <div class="band alt"><div class="wrap">
+  <h2>Before you apply</h2>
+  <details><summary>Does our group need to be a registered charity?</summary><p>No. We support constituted groups, community interest companies and informal resident networks. Where a group is not constituted, we can help find a partner to hold funds.</p></details>
+  <details><summary>What will you not fund?</summary><p>We do not fund individuals, political or religious campaigning, or activities that do not benefit the wider community.</p></details>
+  <details><summary>How long does a decision take?</summary><p>For advice and introductions, we aim to respond within ten working days. Grant decisions follow the timetable published with each opportunity.</p></details>
+ </div></div>
+</section>
+
+<!-- FUNDING -->
+<section class="page" id="p-funding">
+ <div class="band dark"><div class="wrap pagehead"><div><span class="kick">Funding and opportunities</span><h1>Grant opportunities and support routes.</h1></div><p>Our own funds and selected opportunities from partners and other funders, in one place.</p></div></div>
+ <div class="band"><div class="wrap">
+  <div class="chips" id="fundChips"></div>
+  <div class="list" id="opps"></div>
+  <p class="note">Sample content: listings, amounts and dates are illustrative and must be confirmed before publication.</p>
+ </div></div>
+ <div class="band alt"><div class="wrap grid">
+  <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Funding alerts</h3><p>We share new opportunities with groups we work with as soon as they are announced.</p></div>
+  <div class="card"><div class="ico c"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 9h8M8 13h8M8 17h5"/></svg></div><h3>Application support</h3><p>Help writing applications, budgets and monitoring plans for external funders.</p></div>
+  <div class="card"><div class="ico m"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8M23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg></div><h3>In-kind support</h3><p>Venues, equipment, photography, design and volunteer time from our partners.</p></div>
+ </div></div>
+</section>
+
+<!-- WORK WITH US -->
+<section class="page" id="p-work-with-us">
+ <div class="band dark"><div class="wrap pagehead"><div><span class="kick">Work with us</span><h1>Partner with communities, not around them.</h1></div><p>We help businesses, councils and developers invest in local priorities with credibility, transparency and measurable social value.</p></div></div>
+ <div class="band"><div class="wrap grid">
+  <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><h3>Businesses</h3><p>Deliver social value and corporate responsibility commitments through projects residents actually want, with evidence to report on.</p></div>
+  <div class="card"><div class="ico c"><svg viewBox="0 0 24 24"><path d="M3 10h18L12 3zM5 10v8M9 10v8M15 10v8M19 10v8M3 21h18"/></svg></div><h3>Councils and public bodies</h3><p>Reach groups that traditional consultation misses and co-design neighbourhood programmes with them.</p></div>
+  <div class="card"><div class="ico m"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V9l6-4v15M14 20V3l6 4v13"/></svg></div><h3>Developers and housing providers</h3><p>Turn community benefit commitments into resident-led initiatives that last beyond the build.</p></div>
+  <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a5 5 0 019-3 5 5 0 019 3c0 6.5-8 11-8 11z"/></svg></div><h3>Funders and foundations</h3><p>Work with a local delivery partner that already holds trusted relationships with residents.</p></div>
+ </div></div>
+ <div class="band dark"><div class="wrap split">
+  <div><h2>What partners receive</h2><p>Every partnership is built around clear objectives, honest reporting and genuine resident involvement.</p></div>
+  <ol class="steps">
+   <li><b>1</b><div><h3 style="color:var(--ink)">A clear brief</h3><p>Agreed outcomes, budget and timeline from the start.</p></div></li>
+   <li><b>2</b><div><h3 style="color:var(--ink)">Trusted local access</h3><p>Introductions to groups and residents through established relationships.</p></div></li>
+   <li><b>3</b><div><h3 style="color:var(--ink)">Impact reporting</h3><p>Outcome reports, case studies and content suitable for your own social value reporting.</p></div></li>
+  </ol>
+ </div></div>
+ <div class="band"><div class="wrap"><div class="cta"><div><h2>Interested in a partnership?</h2><p>We would be pleased to discuss how we could work together.</p></div><a class="btn" href="#contact">Contact our team</a></div></div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="p-contact">
+ <div class="band dark"><div class="wrap pagehead"><div><span class="kick">Contact</span><h1>Talk to us.</h1></div><p>Whether you are a resident, a community group or a potential partner, we will direct your enquiry to the right person.</p></div></div>
+ <div class="band"><div class="wrap split">
+  <div>
+   <dl>
+    <div><dt>Email</dt><dd><a href="mailto:info@newmanfrancis.co.uk">info@newmanfrancis.co.uk</a></dd></div>
+    <div><dt>Telephone</dt><dd>020 0000 0000</dd></div>
+    <div><dt>Office hours</dt><dd>Monday to Friday, 9.00am to 5.30pm</dd></div>
+    <div><dt>Registered office</dt><dd>Newman Francis CIC, address to be confirmed</dd></div>
+   </dl>
+   <p class="note">Contact details are placeholders and must be confirmed before launch.</p>
+  </div>
+  <form id="contactForm" novalidate>
+   <div class="two"><label>Your name<input id="c-name" required autocomplete="name"></label><label>Email address<input id="c-email" type="email" required autocomplete="email"></label></div>
+   <label>I am contacting you as<select id="c-who"><option>A resident</option><option>A community group</option><option>A business</option><option>A council or public body</option><option>A funder</option><option>Other</option></select></label>
+   <label>Message<textarea id="c-msg" required></textarea></label>
+   <button class="btn lime" type="submit">Send message</button>
+   <div class="ok" id="c-ok" role="status"></div>
+  </form>
+ </div></div>
+</section>
+</main>
+
+<footer>
+ <div class="ft">
+  <div><a class="logo" href="#home" style="color:#fff;padding:0;margin-bottom:12px">Newman Francis CIC</a><p>Community investment, resident-led initiatives, grants, partnerships and measurable social impact.</p></div>
+  <div><h3>Explore</h3><a href="#impact">Our impact</a><a href="#get-support">Get support</a><a href="#funding">Funding and opportunities</a></div>
+  <div><h3>Connect</h3><a href="#work-with-us">Work with us</a><a href="#contact">Contact</a><a href="https://www.newmanfrancis.co.uk">Newman Francis Ltd</a></div>
+ </div>
+ <div class="legal"><span>© 2026 Newman Francis CIC. Registered in England and Wales. Company number to be confirmed.</span><span>Privacy policy · Accessibility · Cookies</span></div>
+</footer>
+
+<script>
+{
+const projects=[
+ {t:'Estate garden revival',a:'Environment',d:'Residents transforming an unused courtyard into a shared growing space, with weekly sessions for families.',s:'In delivery'},
+ {t:'Youth voice panel',a:'Young people',d:'Young residents advising on the design of new public spaces in their neighbourhood.',s:'Emerging'},
+ {t:'Community kitchen',a:'Wellbeing',d:'A volunteer-run kitchen offering affordable meals and cooking skills in a local hall.',s:'In delivery'},
+ {t:'Residents steering group',a:'Regeneration',d:'Supporting a resident group to shape decisions during a major redevelopment.',s:'Ongoing'},
+ {t:'Digital skills cafe',a:'Wellbeing',d:'Drop-in sessions helping older residents get online with confidence.',s:'Emerging'},
+ {t:'Street art and heritage trail',a:'Young people',d:'Young people researching local history and turning it into public artwork.',s:'Emerging'}
+];
+const opps=[
+ {t:'Community Spark Grants',k:'CIC fund',d:'Small grants for new resident-led ideas and first-time groups.',amt:'Up to £1,500',when:'Open all year'},
+ {t:'Neighbourhood Partnership Fund',k:'CIC fund',d:'Match funding for projects delivered with a local business or council partner.',amt:'Up to £5,000',when:'Next round: spring 2027'},
+ {t:'Capacity building support',k:'Support',d:'Free help with governance, budgets, safeguarding and impact measurement.',amt:'In kind',when:'Open all year'},
+ {t:'Partner-funded opportunity',k:'Partner',d:'Opportunities from businesses and developers, shared with eligible groups.',amt:'Varies',when:'Announced as available'},
+ {t:'External funder briefing',k:'External',d:'Selected national and regional funds, with guidance on whether to apply.',amt:'Varies',when:'Updated monthly'}
+];
+const $=s=>document.querySelector(s);
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tagCls={'In delivery':'','Emerging':'c','Ongoing':'m','CIC fund':'','Support':'m','Partner':'c','External':'m'};
+function chips(el,list,fn){let cur='All';const draw=()=>{el.innerHTML=['All',...list].map(x=>`<button class="chip" aria-pressed="${x===cur}" data-v="${esc(x)}">${esc(x)}</button>`).join('');fn(cur)};el.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cur=b.dataset.v;draw()});draw()}
+chips($('#impactChips'),[...new Set(projects.map(p=>p.a))],v=>{
+ $('#projects').innerHTML=projects.filter(p=>v==='All'||p.a===v).map(p=>`<article class="card"><span class="tag ${tagCls[p.s]}">${esc(p.s)}</span><h3 style="margin-top:14px">${esc(p.t)}</h3><p>${esc(p.d)}</p><p style="margin:0;font-size:14px">Theme: ${esc(p.a)}</p></article>`).join('')});
+chips($('#fundChips'),[...new Set(opps.map(o=>o.k))],v=>{
+ $('#opps').innerHTML=opps.filter(o=>v==='All'||o.k===v).map(o=>`<article class="opp"><div><span class="tag ${tagCls[o.k]}">${esc(o.k)}</span><h3>${esc(o.t)}</h3><p>${esc(o.d)}</p></div><div class="amt">${esc(o.amt)}<small>${esc(o.when)}</small></div></article>`).join('')});
+const pages=['home','impact','get-support','funding','work-with-us','contact'];
+function route(){const h=location.hash.slice(1);const p=pages.includes(h)?h:'home';
+ document.querySelectorAll('.page').forEach(s=>s.classList.toggle('on',s.id==='p-'+p));
+ document.querySelectorAll('nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+p));
+ $('#nav').classList.remove('open');$('#menu').setAttribute('aria-expanded','false');window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+$('#menu').addEventListener('click',()=>{const o=$('#nav').classList.toggle('open');$('#menu').setAttribute('aria-expanded',o)});
+function wire(id,ok,fields){$(id).addEventListener('submit',e=>{e.preventDefault();const box=$(ok);
+ const missing=fields.filter(f=>!$(f).value.trim());const em=$(id).querySelector('input[type=email]');
+ if(missing.length){box.textContent='Please complete all required fields.';box.classList.add('show');$(missing[0]).focus();return}
+ if(!em.checkValidity()){box.textContent='Please enter a valid email address.';box.classList.add('show');em.focus();return}
+ box.textContent='Thank you. This is a prototype, so your message has not been sent. On the live site this form will send directly to our team.';box.classList.add('show')})}
+wire('#supportForm','#s-ok',['#s-name','#s-org','#s-email','#s-msg']);
+wire('#contactForm','#c-ok',['#c-name','#c-email','#c-msg']);
+}
+</script>
+</body>
+</html>
